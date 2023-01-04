@@ -1,0 +1,12 @@
+C:\Users\notma\source\repos\second\second.Domain\bin\Debug\net6.0\second.Domain.deps.json
+C:\Users\notma\source\repos\second\second.Domain\bin\Debug\net6.0\second.Domain.dll
+C:\Users\notma\source\repos\second\second.Domain\bin\Debug\net6.0\second.Domain.pdb
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.csproj.AssemblyReference.cache
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.AssemblyInfoInputs.cache
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.AssemblyInfo.cs
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.csproj.CoreCompileInputs.cache
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.dll
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\refint\second.Domain.dll
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\second.Domain.pdb
+C:\Users\notma\source\repos\second\second.Domain\obj\Debug\net6.0\ref\second.Domain.dll

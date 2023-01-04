@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using second.Domain.Entity;
 using second.Models;
 using System.Diagnostics;
+
 
 namespace second.Controllers
 {
@@ -15,7 +17,13 @@ namespace second.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Robot r = new Robot()
+            {
+                Name = "Test",
+                Price = 200
+            };
+
+            return View(r);
         }
 
         public IActionResult Privacy()
