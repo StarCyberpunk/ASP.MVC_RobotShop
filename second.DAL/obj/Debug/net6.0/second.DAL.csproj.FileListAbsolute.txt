@@ -1,0 +1,15 @@
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.DAL.deps.json
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.DAL.dll
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.DAL.pdb
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.Domain.dll
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.Domain.pdb
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.csproj.AssemblyReference.cache
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.AssemblyInfoInputs.cache
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.AssemblyInfo.cs
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.csproj.CoreCompileInputs.cache
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.csproj.CopyComplete
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.dll
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\refint\second.DAL.dll
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.pdb
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\ref\second.DAL.dll

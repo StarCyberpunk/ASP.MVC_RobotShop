@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using second.DAL.Interfaces;
 using second.Domain.Entity;
 using second.Models;
 using System.Diagnostics;
@@ -8,22 +9,18 @@ namespace second.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IRobotRepository _robotRepository;
+        public HomeController(IRobotRepository rr)
         {
-            _logger = logger;
+            _robotRepository = rr;
         }
 
-        public IActionResult Index()
-        {
-            Robot r = new Robot()
-            {
-                Name = "Test",
-                Price = 200
-            };
 
-            return View(r);
+        public  IActionResult Index()
+        {
+            var resp = _robotRepository.Select();
+
+            return View();
         }
 
         public IActionResult Privacy()

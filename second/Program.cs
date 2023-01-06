@@ -2,6 +2,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using second.DAL;
+using second.DAL.Interfaces;
+using second.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var con = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(con));
+builder.Services.AddScoped<IRobotRepository, RobotRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

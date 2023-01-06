@@ -1051,7 +1051,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.1",
+          "Microsoft.EntityFrameworkCore": "6.0.12",
           "second.Domain": "1.0.0"
         },
         "compile": {
