@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using second.DAL.Interfaces;
+using second.Domain.Entity;
 
 namespace second.Controllers
 {
@@ -11,9 +12,24 @@ namespace second.Controllers
             _robotRepository = rr;
         }
         [HttpGet]
-        public IActionResult GetRobots()
+        public async Task<IActionResult> GetRobots()
         {
-            var resp = _robotRepository.Select();
+            var resp = await _robotRepository.Select();
+            var resp2 = await _robotRepository.GetByName("Test");
+            var resp3 = await _robotRepository.Get(2);
+
+            var robot = new Robot()
+            {
+                Name = "Manipul",
+                Model = "A123",
+                Speed = 0,
+                Price = 230000,
+                Description = "Top",
+                DateCreate = DateTime.Now,
+                TypeRobot = Domain.Enum.TypeRobot.PromshRobot
+            };
+            await _robotRepository.Create(robot);
+            await _robotRepository.Delete(robot);
             return View(resp);
         }
     }

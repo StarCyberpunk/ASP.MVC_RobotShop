@@ -1,4 +1,5 @@
-﻿using System;
+﻿using second.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace second.DAL.Interfaces
 {
     public interface IBaseRepository<T>
     {
-        bool Create(T entity);
-        T Get(int id);
-        IEnumerable<T> Select();
-        bool Delete(T entity);
+        Task<bool> Create(T entity);
+        Task<T> Get(int id);
+        Task<List<T>> Select();
+        Task<bool> Delete(T entity);
     }
 }

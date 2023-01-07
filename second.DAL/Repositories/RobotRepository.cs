@@ -16,29 +16,33 @@ namespace second.DAL.Repositories
         {
             appDbCon = a;
         }
-        public bool Create(Robot entity)
+        public async Task< bool> Create(Robot entity)
         {
-            throw new NotImplementedException();
+            await appDbCon.Robot.AddAsync(entity);
+            await appDbCon.SaveChangesAsync();
+            return true;
         }
 
-        public bool Delete(Robot entity)
+        public async Task<bool> Delete(Robot entity)
         {
-            throw new NotImplementedException();
+            appDbCon.Robot.Remove(entity);
+            appDbCon.SaveChangesAsync();
+            return true;
         }
 
-        public Robot Get(int id)
+        public async Task<Robot> Get(int id)
         {
-            throw new NotImplementedException();
+            return await appDbCon.Robot.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Robot GetByName(string name)
+        public async Task<Robot> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await appDbCon.Robot.FirstOrDefaultAsync(x => x.Name == name);
         }
 
-        public IEnumerable<Robot> Select()
+        public async Task<List<Robot>> Select()
         {
-            return (IEnumerable<Robot>)appDbCon.Robot.ToList();
+            return await appDbCon.Robot.ToListAsync();
         }
     }
 }

@@ -9,6 +9,6 @@ namespace second.DAL.Interfaces
 {
     public interface IRobotRepository:IBaseRepository<Robot>
     {
-        Robot GetByName(string name);
+        Task<Robot> GetByName(string name);
     }
 }
