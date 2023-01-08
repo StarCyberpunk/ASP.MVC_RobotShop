@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\second.DAL\second.DAL.csproj" />
     <ProjectReference Include="..\second.Domain\second.Domain.csproj" />
+    <ProjectReference Include="..\second.Service\second.Service.csproj" />
   </ItemGroup>
 
 </Project>

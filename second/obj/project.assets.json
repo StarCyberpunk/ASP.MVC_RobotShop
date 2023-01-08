@@ -1070,6 +1070,20 @@
         "runtime": {
           "bin/placeholder/second.Domain.dll": {}
         }
+      },
+      "second.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "second.DAL": "1.0.0",
+          "second.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/second.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/second.Service.dll": {}
+        }
       }
     }
   },
@@ -3249,13 +3263,19 @@
       "type": "project",
       "path": "../second.Domain/second.Domain.csproj",
       "msbuildProject": "../second.Domain/second.Domain.csproj"
+    },
+    "second.Service/1.0.0": {
+      "type": "project",
+      "path": "../second.Service/second.Service.csproj",
+      "msbuildProject": "../second.Service/second.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "second.DAL >= 1.0.0",
-      "second.Domain >= 1.0.0"
+      "second.Domain >= 1.0.0",
+      "second.Service >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3295,6 +3315,9 @@
             },
             "C:\\Users\\notma\\source\\repos\\second\\second.Domain\\second.Domain.csproj": {
               "projectPath": "C:\\Users\\notma\\source\\repos\\second\\second.Domain\\second.Domain.csproj"
+            },
+            "C:\\Users\\notma\\source\\repos\\second\\second.Service\\second.Service.csproj": {
+              "projectPath": "C:\\Users\\notma\\source\\repos\\second\\second.Service\\second.Service.csproj"
             }
           }
         }

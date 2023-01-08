@@ -76,3 +76,5 @@ C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\runtimes\win\lib\nets
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.DAL.dll
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.DAL.pdb
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.Service.dll
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.Service.pdb

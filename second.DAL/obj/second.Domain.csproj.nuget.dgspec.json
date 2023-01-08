@@ -31,7 +31,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\notma\\source\\repos\\second\\second.Domain\\second.Domain.csproj": {
+                "projectPath": "C:\\Users\\notma\\source\\repos\\second\\second.Domain\\second.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

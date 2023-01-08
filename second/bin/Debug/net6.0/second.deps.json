@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
           "second.DAL": "1.0.0",
-          "second.Domain": "1.0.0"
+          "second.Domain": "1.0.0",
+          "second.Service": "1.0.0"
         },
         "runtime": {
           "second.dll": {}
@@ -625,6 +626,15 @@
         "runtime": {
           "second.Domain.dll": {}
         }
+      },
+      "second.Service/1.0.0": {
+        "dependencies": {
+          "second.DAL": "1.0.0",
+          "second.Domain": "1.0.0"
+        },
+        "runtime": {
+          "second.Service.dll": {}
+        }
       }
     }
   },
@@ -1074,6 +1084,11 @@
       "sha512": ""
     },
     "second.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "second.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

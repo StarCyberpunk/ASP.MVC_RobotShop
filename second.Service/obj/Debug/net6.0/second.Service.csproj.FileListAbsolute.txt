@@ -1,0 +1,17 @@
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.Service.deps.json
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.Service.dll
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.Service.pdb
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.DAL.dll
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.Domain.dll
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.DAL.pdb
+C:\Users\notma\source\repos\second\second.Service\bin\Debug\net6.0\second.Domain.pdb
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.csproj.AssemblyReference.cache
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.AssemblyInfoInputs.cache
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.AssemblyInfo.cs
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.csproj.CoreCompileInputs.cache
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.csproj.CopyComplete
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.dll
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\refint\second.Service.dll
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\second.Service.pdb
+C:\Users\notma\source\repos\second\second.Service\obj\Debug\net6.0\ref\second.Service.dll
