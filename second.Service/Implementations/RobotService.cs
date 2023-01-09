@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace second.Service.Implementations
 {
@@ -169,6 +170,43 @@ namespace second.Service.Implementations
             }
         }
 
-        
+        public async Task<BaseResponse<Robot>> EditRobot(int id, RobotViewModel rvm)
+        {
+            var baseResponse = new BaseResponse<Robot>();
+            try
+            {
+                var robot = await _RoRepo.Get(id);
+                if (robot == null)
+                {
+                    baseResponse.Description = "Не найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                }
+                else
+                {
+                    robot.Description = rvm.Description;
+                    robot.DateCreate = rvm.DateCreate;
+                    robot.Price = rvm.Price;
+                    robot.Name = rvm.Name;
+                    robot.Speed = rvm.Speed;
+                    robot.Model = rvm.Model;
+
+                    await _RoRepo.Update(robot);
+
+                    baseResponse.Data = robot;
+                    baseResponse.Description = "Найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                }
+
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<Robot>();
+                z.Description = $"[EditRobot]:{ex.Message}";
+
+                return z;
+            }
+        }
     }
 }

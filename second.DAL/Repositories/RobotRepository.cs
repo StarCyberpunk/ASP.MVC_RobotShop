@@ -44,5 +44,12 @@ namespace second.DAL.Repositories
         {
             return await appDbCon.Robot.ToListAsync();
         }
+
+        public async Task<Robot> Update(Robot entity)
+        {
+            appDbCon.Update(entity);
+            appDbCon.SaveChangesAsync();
+            return entity;
+        }
     }
 }
