@@ -49,7 +49,7 @@ namespace second.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Save(int id)
+        public async Task<IActionResult> SaveRobot(int id)
         {
             if (id == 0)
             {
