@@ -11,7 +11,7 @@ namespace second.Domain.Entity
     {
         public long Id { get; set; }
         public string Password { get; set; }
-        public string login { get; set; }
+        public string Login { get; set; }
         public Role Role { get; set; }
     }
 }

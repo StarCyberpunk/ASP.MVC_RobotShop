@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace second.DAL.Interfaces
 {
-    public interface IRobotRepository:IBaseRepository<Robot>
+    public interface IRobotRepository: IBaseRepository<Robot>
     {
         Task<Robot> GetByName(string name);
     }

@@ -78,3 +78,7 @@ C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.DAL.dll
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.DAL.pdb
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.Service.dll
 C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\second.Service.pdb
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\NLog.dll
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\notma\source\repos\second\second\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
