@@ -27,10 +27,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                    </ul>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mr-auto">
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item dropdown">
@@ -71,8 +67,8 @@
                                             <div class="col-md-12">
                                                 <ul class="nav flex-column paragraphHome">
                                                     <li class="nav-item text-center">
-                                                        <a class="nav-link active text-black" asp-controller="Car" asp-action="List">
-                                                            Список
+                                                        <a class="nav-link active text-black" asp-controller="Robot" asp-action="GetRobots">
+                                                            Список роботов
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -110,6 +106,11 @@
                                 </div>
                             </li>
                         }
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                       
                     </ul>
 
                     @if (User.Identity.IsAuthenticated)

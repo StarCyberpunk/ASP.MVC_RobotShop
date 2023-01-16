@@ -10,9 +10,9 @@ namespace second.Domain.Enum
 {
     public enum Role
     {
-        [Display(Name = "Админ")]
+        [Display(Name = "Admin")]
         Admin = 0,
-        [Display(Name = "Пользователь")]
+        [Display(Name = "User")]
         User = 1,
         
     }

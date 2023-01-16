@@ -1,14 +1,28 @@
-﻿@*
+﻿@using second.Domain.Entity
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
 @model List<second.Domain.Entity.Robot>
 @{
     Layout = "_Layout";
 }
-@foreach (var rob in Model){
-    <p>@rob.Name</p>
-    <p>@rob.Price</p>
-    <p>@rob.Model</p>
 
-}
+<div class="container-fluid">
+    <div class="card-group">
+        <div class="row">
+            @foreach (var tv in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://epicagroup.ru/assets/components/system_catalog/admin_panel/img/1dd7a9247e23850cf6e3e2ed25e5539ef72bbe15.jpg" class="card-img-top" alt="..." style="width:200px; height:200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@tv.Name</h5>
+                            <p class="card-text">Цена: @tv.Price</p>
+                            <a asp-controller="Robot" asp-action="GetRobot" asp-route-id="@tv.Id" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

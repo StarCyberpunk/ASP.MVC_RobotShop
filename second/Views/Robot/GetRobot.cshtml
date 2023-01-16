@@ -1,10 +1,35 @@
-﻿@*
+﻿
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model second.Domain.Entity.Robot
 @{
     Layout = "_Layout";
 }
-<p>@Model.Name</p>
-<p>@Model.Price</p>
-<p>@Model.Model</p>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <h1>@Model.Name</h1>
+            <img src="${Tov.getImg()}" style="width: 500px;height: 500px">
+        </div>
+        <div class="col-4">
+
+            <br />
+            <h3>Цена: @Model.Price</h3>
+            <br />
+            <h3>Модель: @Model.Model</h3>
+            <h3> Категории: ${Tov.getCategory_springs().getName()}</h3>
+            <h3> Поставщик: ${Tov.getPostavshik_springs().getNameCompany()}</h3>
+            <h3> Изготовитель: ${Tov.getIzgotovitel_springs().getName_Izgot()}</h3>
+            <a href="http://localhost:8080/buying/${Tov.getId()}" class="btn btn-primary">Купить</a>
+
+        </div>
+    </div>
+
+
+    <div>
+    </div>
+</div>
+
