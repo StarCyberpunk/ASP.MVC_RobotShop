@@ -34,7 +34,8 @@ namespace second.Service.Implementations
                     Speed=rvm.Speed,
                     Description=rvm.Description,
                     Price=rvm.Price,
-                    TypeRobot=(TypeRobot)Convert.ToInt32(rvm.TypeRobot)
+                    TypeRobot=(TypeRobot)Enum.Parse(typeof(TypeRobot),rvm.TypeRobot)
+                    
                 };
                 await _RoRepo.Create(r);
                 baseRepository.Description = "Saved";

@@ -63,7 +63,7 @@ namespace second.Controllers
             return RedirectToAction("Error");
         }
         [HttpPost]
-        public async Task<IActionResult> Save(RobotViewModel rvm)
+        public async Task<IActionResult> SaveRobot(RobotViewModel rvm)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace second.Controllers
                     await _RobotService.EditRobot(rvm.Id,rvm);
                 }
             }
-            return RedirectToAction("GetRobot");
+            return RedirectToAction("GetRobots");
         }
     }
 }

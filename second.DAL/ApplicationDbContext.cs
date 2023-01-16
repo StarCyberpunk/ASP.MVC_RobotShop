@@ -50,6 +50,23 @@ namespace second.DAL
                     .HasPrincipalKey<User>(x => x.Id)
                     .OnDelete(DeleteBehavior.Cascade);*/
             });
+            modelBuilder.Entity<User>(builder =>
+            {
+                builder.ToTable("Users").HasKey(x => x.Id);
+
+                builder.HasData(new User
+                {
+                    Id = 2,
+                    Login = "DefaultlUser",
+                    Password = HashPasswordHelper.HashPassword("654321"),
+                    Role = Role.User
+                });
+
+                builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+                builder.Property(x => x.Password).IsRequired();
+                builder.Property(x => x.Login).HasMaxLength(100).IsRequired();
+            });
 
             modelBuilder.Entity<Robot>(builder =>
             {
