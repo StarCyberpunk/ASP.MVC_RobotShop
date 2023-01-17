@@ -13,5 +13,6 @@ namespace second.Domain.Entity
         public string Password { get; set; }
         public string Login { get; set; }
         public Role Role { get; set; }
+        public Profile Profile { get; set; }
     }
 }

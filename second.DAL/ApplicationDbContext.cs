@@ -21,6 +21,7 @@ namespace second.DAL
         }
         public DbSet<Robot> Robot { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(builder =>
@@ -40,12 +41,12 @@ namespace second.DAL
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Login).HasMaxLength(100).IsRequired();
 
-               /* builder.HasOne(x => x.Profile)
+               builder.HasOne(x => x.Profile)
                     .WithOne(x => x.User)
                     .HasPrincipalKey<User>(x => x.Id)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                builder.HasOne(x => x.Basket)
+              /*  builder.HasOne(x => x.Basket)
                     .WithOne(x => x.User)
                     .HasPrincipalKey<User>(x => x.Id)
                     .OnDelete(DeleteBehavior.Cascade);*/
@@ -84,7 +85,7 @@ namespace second.DAL
                 });
             });
 
-            /*modelBuilder.Entity<Profile>(builder =>
+            modelBuilder.Entity<Profile>(builder =>
             {
                 builder.ToTable("Profiles").HasKey(x => x.Id);
 
@@ -98,7 +99,7 @@ namespace second.DAL
                     UserId = 1
                 });
             });
-
+            /*
             modelBuilder.Entity<Basket>(builder =>
             {
                 builder.ToTable("Baskets").HasKey(x => x.Id);
