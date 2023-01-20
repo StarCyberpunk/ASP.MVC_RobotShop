@@ -41,15 +41,15 @@ namespace second.DAL
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Login).HasMaxLength(100).IsRequired();
 
-               builder.HasOne(x => x.Profile)
-                    .WithOne(x => x.User)
-                    .HasPrincipalKey<User>(x => x.Id)
-                    .OnDelete(DeleteBehavior.Cascade);
+                builder.HasOne(x => x.Profile)
+                     .WithOne(x => x.User)
+                     .HasPrincipalKey<User>(x => x.Id)
+                     .OnDelete(DeleteBehavior.Cascade);
 
-              /*  builder.HasOne(x => x.Basket)
-                    .WithOne(x => x.User)
-                    .HasPrincipalKey<User>(x => x.Id)
-                    .OnDelete(DeleteBehavior.Cascade);*/
+                /*  builder.HasOne(x => x.Basket)
+                      .WithOne(x => x.User)
+                      .HasPrincipalKey<User>(x => x.Id)
+                      .OnDelete(DeleteBehavior.Cascade);*/
             });
             modelBuilder.Entity<User>(builder =>
             {
@@ -58,7 +58,7 @@ namespace second.DAL
                 builder.HasData(new User
                 {
                     Id = 2,
-                    Login = "DefaultlUser",
+                    Login = "DefaultUser",
                     Password = HashPasswordHelper.HashPassword("654321"),
                     Role = Role.User
                 });

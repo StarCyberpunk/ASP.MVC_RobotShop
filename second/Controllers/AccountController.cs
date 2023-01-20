@@ -62,6 +62,15 @@ namespace second.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
-
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var res = await _accoiuntService.GetAllUsers();
+            if (res.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(res.Data);
+            }
+            return RedirectToAction("Main");
+        }
     }
 }

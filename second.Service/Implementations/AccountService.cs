@@ -122,5 +122,33 @@ namespace second.Service.Implementations
             return new ClaimsIdentity(claims, "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
+
+        public async Task<BaseResponse<IEnumerable<User>>> GetAllUsers()
+        {
+            var baseResponse = new BaseResponse<IEnumerable<User>>();
+            try
+            {
+                var users = await _userRepository.Select();
+                if (users.Count == 0)
+                {
+                    baseResponse.Description = "Найдено 0 эл-в";
+                }
+                else
+                {
+                    baseResponse.Description = String.Format("Найдено {0} эл-в", users.Count);
+                    baseResponse.Data = users;
+                }
+                baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<IEnumerable<User>>();
+                z.Description = $"[GetUsers]:{ex.Message}";
+
+                return z;
+            }
+        }
     }
 }

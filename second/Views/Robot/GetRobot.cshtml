@@ -24,8 +24,13 @@
             <h3>Скорость: @Model.Speed</h3>
             <h3>Цена: @Model.Price</h3>
            
-
-            
+            @if (User.IsInRole("Admin")){
+                <a asp-controller="Robot" asp-action="SaveRobot" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
+                <form method="post" asp-controller="Robot" asp-action="DeleteRobot" asp-route-id="@Model.Id">
+                    <input class="btn btn-primary" type="submit" value="Удалить" />
+                </form>
+                
+            }
             <a href="http://localhost:8080/buying/${Tov.getId()}" class="btn btn-primary">Купить</a>
 
         </div>

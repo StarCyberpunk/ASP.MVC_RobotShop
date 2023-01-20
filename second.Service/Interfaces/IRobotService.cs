@@ -17,5 +17,6 @@ namespace second.Service.Interfaces
         Task<BaseResponse<bool>> DeleteRobot(int id);
         Task<BaseResponse<Robot>> GetByName(string name);
         Task<BaseResponse<Robot>> EditRobot(int id, RobotViewModel rvm);
+        RobotViewModel RobotToRWM(Robot data);
     }
 }

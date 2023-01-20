@@ -36,14 +36,14 @@ namespace second.Controllers
             return RedirectToAction("Error");
         }
         
-        [HttpDelete]
+        [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRobot(int id)
         {
             var res = await _RobotService.DeleteRobot(id);
             if(res.Data)
             {
-                return RedirectToAction("GetRobot");
+                return RedirectToAction("GetRobots");
             }
             return RedirectToAction("Error");
         }
@@ -58,7 +58,8 @@ namespace second.Controllers
             var response = await _RobotService.GetRobotById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return View(response.Data);
+               RobotViewModel rrr= _RobotService.RobotToRWM(response.Data);
+                return View(rrr);
             }
             return RedirectToAction("Error");
         }

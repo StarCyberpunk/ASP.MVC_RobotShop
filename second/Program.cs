@@ -37,6 +37,9 @@ builder.Services.AddScoped<IRobotService, RobotService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 
+builder.Services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

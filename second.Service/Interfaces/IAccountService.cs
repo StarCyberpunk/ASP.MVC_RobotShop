@@ -14,6 +14,7 @@ namespace second.Service.Interfaces
     {
         Task<BaseResponse<ClaimsIdentity>> Register( RegisterViewModel rvm);
         Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model);
+        Task<BaseResponse<IEnumerable<User>>> GetAllUsers();
 
 
     }

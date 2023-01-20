@@ -7,6 +7,7 @@ using second.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -208,6 +209,19 @@ namespace second.Service.Implementations
 
                 return z;
             }
+        }
+
+        public RobotViewModel RobotToRWM(Robot r)
+        {
+            RobotViewModel rw = new RobotViewModel();
+            rw.Id = r.Id;
+            rw.Description = r.Description;
+            rw.DateCreate = r.DateCreate;
+            rw.Price = r.Price;
+            rw.Name = r.Name;
+            rw.Speed = r.Speed;
+            rw.Model = r.Model;
+            return rw;
         }
     }
 }
