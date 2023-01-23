@@ -21,7 +21,11 @@ namespace second.Service.Implementations
         {
             _PrRepo = repo;
         }
-
+        /// <summary>
+        /// Не доделано
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public async Task<BaseResponse<bool>> CreateProfile(ProfileViewModel p)
         {
             var baseRepository = new BaseResponse<bool>();
@@ -49,17 +53,104 @@ namespace second.Service.Implementations
 
         public async Task<BaseResponse<bool>> DeleteProfile(int id)
         {
-            throw new NotImplementedException();
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                Profile resp = await _PrRepo.Get(id);
+                if (resp == null)
+                {
+                    baseResponse.Description = "Не найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.Data = false;
+                    return baseResponse;
+                }
+                else
+                {
+                    await _PrRepo.Delete(resp);
+                    baseResponse.Description = "Удалено";
+                    baseResponse.Data = true;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                    return baseResponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<bool>();
+                z.Description = $"[DeleteProfile]:{ex.Message}";
+
+                return z;
+            }
         }
 
         public async Task<BaseResponse<Profile>> EditProfile(int id, ProfileViewModel pvm)
         {
-            throw new NotImplementedException();
+            var baseResponse = new BaseResponse<Profile>();
+            try
+            {
+                var robot = await _PrRepo.Get(id);
+                if (robot == null)
+                {
+                    baseResponse.Description = "Не найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                }
+                else
+                {
+                   /* robot.Description = rvm.Description;
+                    robot.DateCreate = rvm.DateCreate;
+                    robot.Price = rvm.Price;
+                    robot.Name = rvm.Name;
+                    robot.Speed = rvm.Speed;
+                    robot.Model = rvm.Model;
+
+                    await _RoRepo.Update(robot);*/
+
+                    baseResponse.Data = robot;
+                    baseResponse.Description = "Найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                }
+
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<Profile>();
+                z.Description = $"[EditProfile]:{ex.Message}";
+
+                return z;
+            }
         }
 
-        public async Task<BaseResponse<Profile>> GetProfileById(int id)
+        public async Task<BaseResponse<Profile>> GetProfileByUserId(int id)
         {
-            throw new NotImplementedException();
+            var baseResponse = new BaseResponse<Profile>();
+            try
+            {
+                var robot = await _PrRepo.Get(id);
+                if (robot == null)
+                {
+                    baseResponse.Description = "Не найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+
+                }
+                else
+                {
+                    baseResponse.Description = "Найдено";
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                    baseResponse.Data = robot;
+                }
+
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<Profile>();
+                z.Description = $"[GetProfileById]:{ex.Message}";
+
+                return z;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using second.DAL.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using second.DAL.Interfaces;
 using second.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,27 +11,32 @@ namespace second.DAL.Repositories
 {
     public class ProfileRepository : IBaseRepository<Profile>
     {
-        public Task<bool> Create(Profile entity)
+        private readonly ApplicationDbContext appDbCon;
+        public ProfileRepository(ApplicationDbContext a)
+        {
+            appDbCon = a;
+        }
+        public async Task<bool> Create(Profile entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(Profile entity)
+        public async Task<bool> Delete(Profile entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Profile> Get(int id)
+        public async Task<Profile> Get(int id)
+        {
+            return await appDbCon.Profiles.FirstOrDefaultAsync(x => x.UserId == id);
+        }
+
+        public async Task<List<Profile>> Select()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Profile>> Select()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Profile> Update(Profile entity)
+        public async Task<Profile> Update(Profile entity)
         {
             throw new NotImplementedException();
         }

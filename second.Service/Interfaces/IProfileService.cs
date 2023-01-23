@@ -13,9 +13,10 @@ namespace second.Service.Interfaces
     {
        
         Task<BaseResponse<bool>> CreateProfile(ProfileViewModel p);
-        Task<BaseResponse<Profile>> GetProfileById(int id);
+        Task<BaseResponse<Profile>> GetProfileByUserId(int id);
         Task<BaseResponse<bool>> DeleteProfile(int id);
 
         Task<BaseResponse<Profile>> EditProfile(int id, ProfileViewModel pvm);
+
     }
 }

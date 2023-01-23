@@ -17,13 +17,16 @@ namespace second.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
        : base(options)
         {
+            
             Database.EnsureCreated();
+           
         }
         public DbSet<Robot> Robot { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Admin
             modelBuilder.Entity<User>(builder =>
             {
                 builder.ToTable("Users").HasKey(x => x.Id);
@@ -51,6 +54,7 @@ namespace second.DAL
                       .HasPrincipalKey<User>(x => x.Id)
                       .OnDelete(DeleteBehavior.Cascade);*/
             });
+            //DefaultUser
             modelBuilder.Entity<User>(builder =>
             {
                 builder.ToTable("Users").HasKey(x => x.Id);
@@ -68,7 +72,7 @@ namespace second.DAL
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Login).HasMaxLength(100).IsRequired();
             });
-
+            //Роботы
             modelBuilder.Entity<Robot>(builder =>
             {
                 builder.ToTable("Robot").HasKey(x => x.Id);
@@ -76,12 +80,27 @@ namespace second.DAL
                 builder.HasData(new Robot
                 {
                     Id = 1,
-                    Name = "ITawd",
+                    Name = "Robot1",
                     Description = new string('A', 50),
                     DateCreate = DateTime.Now,
                     Speed = 230,
                     Model = "awda",
                     TypeRobot = TypeRobot.HomeRobot
+                });
+            });
+            modelBuilder.Entity<Robot>(builder =>
+            {
+                builder.ToTable("Robot").HasKey(x => x.Id);
+
+                builder.HasData(new Robot
+                {
+                    Id = 2,
+                    Name = "Robot2",
+                    Description = new string('A', 50),
+                    DateCreate = DateTime.Now,
+                    Speed = 23,
+                    Model = "awdass",
+                    TypeRobot = TypeRobot.PromshRobot
                 });
             });
 

@@ -150,5 +150,32 @@ namespace second.Service.Implementations
                 return z;
             }
         }
+
+        public async Task<BaseResponse<User>> GetUser(string name)
+        {
+            var baseResponse = new BaseResponse<User>();
+            try
+            {
+                var user = await _userRepository.GetByLogin(name);
+                if (user==null)
+                {
+                    baseResponse.Description = "Не найдено";
+                }
+                else
+                {
+                    baseResponse.Data = user;
+                }
+                baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<User>();
+                z.Description = $"[GetUser]:{ex.Message}";
+
+                return z;
+            }
+        }
     }
 }
