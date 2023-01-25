@@ -8,7 +8,8 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+
+
 
 namespace second.DAL
 {
@@ -18,7 +19,7 @@ namespace second.DAL
        : base(options)
         {
             
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
            
         }
         public DbSet<Robot> Robot { get; set; }
@@ -29,7 +30,7 @@ namespace second.DAL
             //Admin
             modelBuilder.Entity<User>(builder =>
             {
-                builder.ToTable("Users").HasKey(x => x.Id);
+                
 
                 builder.HasData(new User
                 {
@@ -57,7 +58,7 @@ namespace second.DAL
             //DefaultUser
             modelBuilder.Entity<User>(builder =>
             {
-                builder.ToTable("Users").HasKey(x => x.Id);
+                
 
                 builder.HasData(new User
                 {
@@ -75,7 +76,7 @@ namespace second.DAL
             //Роботы
             modelBuilder.Entity<Robot>(builder =>
             {
-                builder.ToTable("Robot").HasKey(x => x.Id);
+               
 
                 builder.HasData(new Robot
                 {
@@ -90,7 +91,7 @@ namespace second.DAL
             });
             modelBuilder.Entity<Robot>(builder =>
             {
-                builder.ToTable("Robot").HasKey(x => x.Id);
+                
 
                 builder.HasData(new Robot
                 {
@@ -106,7 +107,7 @@ namespace second.DAL
 
             modelBuilder.Entity<Profile>(builder =>
             {
-                builder.ToTable("Profiles").HasKey(x => x.Id);
+               
 
                 builder.Property(x => x.Id).ValueGeneratedOnAdd();
                 builder.Property(x => x.Age);
@@ -138,5 +139,6 @@ namespace second.DAL
                     .HasForeignKey(r => r.BasketId);
             });*/
         }
+       
     }
 }

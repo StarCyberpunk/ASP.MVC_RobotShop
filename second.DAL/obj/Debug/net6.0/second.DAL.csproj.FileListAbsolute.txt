@@ -13,3 +13,5 @@ C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.dll
 C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\refint\second.DAL.dll
 C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.pdb
 C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\ref\second.DAL.dll
+C:\Users\notma\source\repos\second\second.DAL\bin\Debug\net6.0\second.DAL.runtimeconfig.json
+C:\Users\notma\source\repos\second\second.DAL\obj\Debug\net6.0\second.DAL.genruntimeconfig.cache
