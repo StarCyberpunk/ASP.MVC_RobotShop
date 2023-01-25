@@ -19,7 +19,6 @@ namespace second.DAL
        : base(options)
         {
             
-            //Database.EnsureCreated();
            
         }
         public DbSet<Robot> Robot { get; set; }
@@ -69,7 +68,6 @@ namespace second.DAL
                 });
 
                 builder.Property(x => x.Id).ValueGeneratedOnAdd();
-
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Login).HasMaxLength(100).IsRequired();
             });
