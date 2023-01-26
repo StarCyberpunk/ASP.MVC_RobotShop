@@ -18,12 +18,16 @@ namespace second.DAL.Repositories
         }
         public async Task<bool> Create(Profile entity)
         {
-            throw new NotImplementedException();
+            await appDbCon.Profiles.AddAsync(entity);
+            await appDbCon.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> Delete(Profile entity)
         {
-            throw new NotImplementedException();
+            appDbCon.Profiles.Remove(entity);
+            appDbCon.SaveChangesAsync();
+            return true;
         }
 
         public async Task<Profile> Get(int id)
@@ -38,7 +42,9 @@ namespace second.DAL.Repositories
 
         public async Task<Profile> Update(Profile entity)
         {
-            throw new NotImplementedException();
+            appDbCon.Update(entity);
+            appDbCon.SaveChangesAsync();
+            return entity;
         }
     }
 }

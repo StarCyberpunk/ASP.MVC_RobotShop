@@ -17,12 +17,15 @@ namespace second.Service.Implementations
     public class ProfileService : IProfileService
     {
         private readonly IBaseRepository<Profile> _PrRepo;
-        public ProfileService(IBaseRepository<Profile> repo)
+        private readonly IUserRepository _ac;
+       
+        public ProfileService(IBaseRepository<Profile> repo,IUserRepository us)
         {
             _PrRepo = repo;
+            _ac = us;
         }
         /// <summary>
-        /// Не доделано
+        /// Доделано
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -31,10 +34,15 @@ namespace second.Service.Implementations
             var baseRepository = new BaseResponse<bool>();
             try
             {
+                
+                var uss=await _ac.Get((int)p.UserId);
                 Profile r = new Profile()
                 {
-                    
-
+                    Address = p.Address,
+                    Age = p.Age,
+                    Id = p.Id,
+                    UserId = p.UserId,
+                    User = uss
                 };
                 await _PrRepo.Create(r);
                 baseRepository.Description = "Saved";
@@ -50,7 +58,11 @@ namespace second.Service.Implementations
             }
             return baseRepository;
         }
-
+        /// <summary>
+        /// Удаление пока не планируется
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<BaseResponse<bool>> DeleteProfile(int id)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -83,29 +95,28 @@ namespace second.Service.Implementations
             }
         }
 
-        public async Task<BaseResponse<Profile>> EditProfile(int id, ProfileViewModel pvm)
+        public async Task<BaseResponse<Profile>> EditProfile( ProfileViewModel pvm)
         {
             var baseResponse = new BaseResponse<Profile>();
             try
             {
-                var robot = await _PrRepo.Get(id);
-                if (robot == null)
+                var profile = await _PrRepo.Get((int)pvm.UserId);
+                if (profile == null)
                 {
                     baseResponse.Description = "Не найдено";
                     baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
                 }
                 else
                 {
-                   /* robot.Description = rvm.Description;
-                    robot.DateCreate = rvm.DateCreate;
-                    robot.Price = rvm.Price;
-                    robot.Name = rvm.Name;
-                    robot.Speed = rvm.Speed;
-                    robot.Model = rvm.Model;
+                    profile.Id = pvm.Id;
+                    profile.Address = pvm.Address;
+                    profile.Age = pvm.Age;
+                    
+                    
 
-                    await _RoRepo.Update(robot);*/
+                    await _PrRepo.Update(profile);
 
-                    baseResponse.Data = robot;
+                    baseResponse.Data = profile;
                     baseResponse.Description = "Найдено";
                     baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
                 }
@@ -127,8 +138,8 @@ namespace second.Service.Implementations
             var baseResponse = new BaseResponse<Profile>();
             try
             {
-                var robot = await _PrRepo.Get(id);
-                if (robot == null)
+                var profile = await _PrRepo.Get(id);
+                if (profile == null)
                 {
                     baseResponse.Description = "Не найдено";
                     baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
@@ -138,7 +149,7 @@ namespace second.Service.Implementations
                 {
                     baseResponse.Description = "Найдено";
                     baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
-                    baseResponse.Data = robot;
+                    baseResponse.Data = profile;
                 }
 
                 return baseResponse;
@@ -151,6 +162,16 @@ namespace second.Service.Implementations
 
                 return z;
             }
+        }
+
+        public ProfileViewModel ProfileToPWM(Profile data)
+        {
+            ProfileViewModel pw = new ProfileViewModel();
+            pw.Address = data.Address;
+            pw.Age = data.Age;
+            pw.UserId = data.UserId;
+            pw.Id =(int) data.Id;
+            return pw;
         }
     }
 }

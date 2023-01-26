@@ -9,19 +9,18 @@
 
 <div class="container-fluid">
     <div class="row">
-        
+        <h1>Ваш профиль</h1>
+        @if(Model==null){
+            <a asp-controller="Profile" asp-action="SaveProfile" class="btn btn-primary">Заполните о себе данные</a>
+        }
+        else{
             <h3>Адрес: @Model.Address</h3>
             <br />
             <h3>Возраст: @Model.Age</h3>
-        <h3>Логин: @Model.User.Login</h3>
-        <a asp-controller="Profile" asp-action="SaveProfile" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
-       
-           
-
+            <h3>Логин: @Model.User.Login</h3>
+            <a asp-controller="Profile" asp-action="SaveProfile" asp-route-Userid="@Model.UserId" class="btn btn-primary">Изменить</a>
+        }
         
-    </div>
 
-
-    <div>
     </div>
 </div>

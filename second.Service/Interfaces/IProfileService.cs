@@ -16,7 +16,7 @@ namespace second.Service.Interfaces
         Task<BaseResponse<Profile>> GetProfileByUserId(int id);
         Task<BaseResponse<bool>> DeleteProfile(int id);
 
-        Task<BaseResponse<Profile>> EditProfile(int id, ProfileViewModel pvm);
-
+        Task<BaseResponse<Profile>> EditProfile( ProfileViewModel pvm);
+        ProfileViewModel ProfileToPWM(Profile data);
     }
 }
