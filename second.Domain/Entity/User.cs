@@ -14,5 +14,6 @@ namespace second.Domain.Entity
         public string Login { get; set; }
         public Role Role { get; set; }
         public Profile Profile { get; set; }
+        public Basket Basket { get; set; }
     }
 }
