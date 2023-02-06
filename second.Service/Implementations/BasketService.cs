@@ -90,6 +90,19 @@ namespace second.Service.Implementations
                 else
                 {
                     var basket = user.Basket;
+                    if (basket == null)
+                    {
+                        Basket b = new Basket
+                        {
+                            UserId = user.Id,
+                            User = user,
+                            Orders = new List<Order>()
+
+                        };
+                        _bsRepo.Create(b);
+                        user.Basket = b;
+                    }
+                     basket = user.Basket;
                     var order = new Order()
                     {
                         RobotId = idrb,

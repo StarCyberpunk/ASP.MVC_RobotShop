@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <h1>Ваша корзина</h1>
-        @if (Model == null)
+        @if (Model.Count() == 0)
         {
             <h1>Корзина пуста</h1>
         }
@@ -20,6 +20,7 @@
             <table>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Img</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Модель</th>
                     <th scope="col">Тип</th>
@@ -29,6 +30,10 @@
             @foreach (OrderViewModel o in Model){
                     <tr>
                         <td>@o.Id</td>
+                        <td>
+
+<img src="https://epicagroup.ru/assets/components/system_catalog/admin_panel/img/1dd7a9247e23850cf6e3e2ed25e5539ef72bbe15.jpg" style="width: 100px;height: 100px">
+                        </td>
                         <td>@o.RobotName
                         </td>
                         <td>@o.Model</td>

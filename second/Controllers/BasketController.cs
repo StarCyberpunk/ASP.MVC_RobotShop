@@ -15,6 +15,7 @@ namespace second.Controllers
         public async Task<IActionResult> Detail()
         {
             var response = await _basketService.GetItems(User.Identity.Name);
+           
             return View(response.Data);
             
         }

@@ -14,11 +14,19 @@
             <a asp-controller="Profile" asp-action="SaveProfile" class="btn btn-primary">Заполните о себе данные</a>
         }
         else{
-            <h3>Адрес: @Model.Address</h3>
-            <br />
-            <h3>Возраст: @Model.Age</h3>
-            <h3>Логин: @Model.User.Login</h3>
-            <a asp-controller="Profile" asp-action="SaveProfile" asp-route-Userid="@Model.UserId" class="btn btn-primary">Изменить</a>
+            <div class="col-6">
+
+                <img src="https://epicagroup.ru/assets/components/system_catalog/admin_panel/img/1dd7a9247e23850cf6e3e2ed25e5539ef72bbe15.jpg" style="width: 500px;height: 500px">
+            </div>
+            <div class="col-3">
+                <h3>Адрес: @Model.Address</h3>
+                <br />
+                <h3>Возраст: @Model.Age</h3>
+                <h3>Логин: @Model.User.Login</h3>
+                <a asp-controller="Profile" asp-action="SaveProfile" asp-route-Userid="@Model.UserId" class="btn btn-primary">Изменить</a>
+            </div>
+            
+            
         }
         
 
