@@ -17,9 +17,9 @@ namespace second.Service.Implementations
     public class ProfileService : IProfileService
     {
         private readonly IBaseRepository<Profile> _PrRepo;
-        private readonly IUserRepository _ac;
+        private readonly IBaseRepository<User> _ac;
        
-        public ProfileService(IBaseRepository<Profile> repo,IUserRepository us)
+        public ProfileService(IBaseRepository<Profile> repo, IBaseRepository<User> us)
         {
             _PrRepo = repo;
             _ac = us;

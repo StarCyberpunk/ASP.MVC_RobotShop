@@ -31,14 +31,20 @@ builder.Host.UseNLog();
 var con = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(con));
 
-builder.Services.AddScoped<IRobotRepository, RobotRepository>();
+builder.Services.AddScoped<IBaseRepository<Robot>, RobotRepository>();
 builder.Services.AddScoped<IRobotService, RobotService>();
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBaseRepository<User>, UserRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
+
+builder.Services.AddScoped<IBaseRepository<Basket>, BasketRepository>();
+builder.Services.AddScoped<IBasketService, BasketService>();
+
+builder.Services.AddScoped<IBaseRepository<Order>, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

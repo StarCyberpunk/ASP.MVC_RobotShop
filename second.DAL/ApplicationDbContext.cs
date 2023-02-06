@@ -24,6 +24,8 @@ namespace second.DAL
         public DbSet<Robot> Robot { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Admin
@@ -49,10 +51,10 @@ namespace second.DAL
                      .HasPrincipalKey<User>(x => x.Id)
                      .OnDelete(DeleteBehavior.Cascade);
 
-                /*  builder.HasOne(x => x.Basket)
-                      .WithOne(x => x.User)
-                      .HasPrincipalKey<User>(x => x.Id)
-                      .OnDelete(DeleteBehavior.Cascade);*/
+                builder.HasOne(x => x.Basket)
+                    .WithOne(x => x.User)
+                    .HasPrincipalKey<User>(x => x.Id)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
             //DefaultUser
             modelBuilder.Entity<User>(builder =>
@@ -117,7 +119,7 @@ namespace second.DAL
                     UserId = 1
                 });
             });
-            /*
+
             modelBuilder.Entity<Basket>(builder =>
             {
                 builder.ToTable("Baskets").HasKey(x => x.Id);
@@ -135,7 +137,7 @@ namespace second.DAL
 
                 builder.HasOne(r => r.Basket).WithMany(t => t.Orders)
                     .HasForeignKey(r => r.BasketId);
-            });*/
+            });
         }
        
     }

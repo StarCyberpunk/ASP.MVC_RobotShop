@@ -22,6 +22,60 @@ namespace second.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("second.Domain.Entity.Basket", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Baskets", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            UserId = 1L
+                        });
+                });
+
+            modelBuilder.Entity("second.Domain.Entity.Order", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("BasketId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("RobotId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.ToTable("Orders", (string)null);
+                });
+
             modelBuilder.Entity("second.Domain.Entity.Profile", b =>
                 {
                     b.Property<long>("Id")
@@ -96,7 +150,7 @@ namespace second.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreate = new DateTime(2023, 1, 25, 20, 6, 48, 419, DateTimeKind.Local).AddTicks(3870),
+                            DateCreate = new DateTime(2023, 2, 6, 15, 26, 52, 860, DateTimeKind.Local).AddTicks(3452),
                             Description = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                             Model = "awda",
                             Name = "Robot1",
@@ -107,7 +161,7 @@ namespace second.DAL.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreate = new DateTime(2023, 1, 25, 20, 6, 48, 419, DateTimeKind.Local).AddTicks(3889),
+                            DateCreate = new DateTime(2023, 2, 6, 15, 26, 52, 860, DateTimeKind.Local).AddTicks(3474),
                             Description = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                             Model = "awdass",
                             Name = "Robot2",
@@ -158,6 +212,28 @@ namespace second.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("second.Domain.Entity.Basket", b =>
+                {
+                    b.HasOne("second.Domain.Entity.User", "User")
+                        .WithOne("Basket")
+                        .HasForeignKey("second.Domain.Entity.Basket", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("second.Domain.Entity.Order", b =>
+                {
+                    b.HasOne("second.Domain.Entity.Basket", "Basket")
+                        .WithMany("Orders")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+                });
+
             modelBuilder.Entity("second.Domain.Entity.Profile", b =>
                 {
                     b.HasOne("second.Domain.Entity.User", "User")
@@ -169,8 +245,16 @@ namespace second.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("second.Domain.Entity.Basket", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("second.Domain.Entity.User", b =>
                 {
+                    b.Navigation("Basket")
+                        .IsRequired();
+
                     b.Navigation("Profile")
                         .IsRequired();
                 });

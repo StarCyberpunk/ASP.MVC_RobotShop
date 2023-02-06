@@ -35,7 +35,7 @@ namespace second.DAL.Repositories
             return await appDbCon.Profiles.FirstOrDefaultAsync(x => x.UserId == id);
         }
 
-        public async Task<List<Profile>> Select()
+        public IQueryable<Profile> Select()
         {
             throw new NotImplementedException();
         }

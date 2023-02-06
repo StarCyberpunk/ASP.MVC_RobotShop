@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace second.DAL.Repositories
 {
-    public class RobotRepository : IRobotRepository
+    public class RobotRepository : IBaseRepository<Robot>
     {
         private readonly ApplicationDbContext appDbCon;
         public RobotRepository(ApplicationDbContext a)
@@ -35,14 +35,11 @@ namespace second.DAL.Repositories
             return await appDbCon.Robot.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Robot> GetByName(string name)
-        {
-            return await appDbCon.Robot.FirstOrDefaultAsync(x => x.Name == name);
-        }
+        
 
-        public async Task<List<Robot>> Select()
+        public IQueryable<Robot> Select()
         {
-            return await appDbCon.Robot.ToListAsync();
+            return  appDbCon.Robot;
         }
 
         public async Task<Robot> Update(Robot entity)

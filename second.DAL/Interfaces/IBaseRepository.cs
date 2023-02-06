@@ -11,7 +11,7 @@ namespace second.DAL.Interfaces
     {
         Task<bool> Create(T entity);
         Task<T> Get(int id);
-        Task<List<T>> Select();
+        IQueryable<T> Select();
         Task<bool> Delete(T entity);
         Task<T> Update(T entity);
     }

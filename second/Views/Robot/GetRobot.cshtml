@@ -31,7 +31,9 @@
                 </form>
                 
             }
-            <a href="http://localhost:8080/buying/${Tov.getId()}" class="btn btn-primary">Купить</a>
+            <form method="post" asp-controller="Basket" asp-action="AddToBasket" asp-route-id="@Model.Id">
+                <input class="btn btn-primary" type="submit" value="Добавить в корзину" />
+            </form>
 
         </div>
     </div>

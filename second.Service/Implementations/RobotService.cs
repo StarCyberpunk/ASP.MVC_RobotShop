@@ -16,8 +16,8 @@ namespace second.Service.Implementations
 {
     public class RobotService : IRobotService
     {
-        private readonly IRobotRepository _RoRepo;
-        public RobotService(IRobotRepository repo)
+        private readonly IBaseRepository<Robot> _RoRepo;
+        public RobotService(IBaseRepository<Robot> repo)
         {
             _RoRepo = repo;
         }
@@ -89,7 +89,8 @@ namespace second.Service.Implementations
             var baseResponse = new BaseResponse<Robot>();
             try
             {
-                var robot = await _RoRepo.GetByName(name);
+                /* var robot = await _RoRepo.GetByName(name);*/
+                var robot =  _RoRepo.Select().FirstOrDefault(x => x.Name == name);
                 if (robot == null)
                 {
                     baseResponse.Description = "Не найдено";
@@ -149,7 +150,7 @@ namespace second.Service.Implementations
             var baseResponse = new BaseResponse<IEnumerable<Robot>>();
             try
             {
-                var robots = await _RoRepo.Select();
+                var robots = _RoRepo.Select().ToList();
                 if (robots.Count == 0)
                 {
                     baseResponse.Description = "Найдено 0 эл-в";

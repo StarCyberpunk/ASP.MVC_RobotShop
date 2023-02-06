@@ -19,10 +19,10 @@ namespace second.Service.Implementations
 {
     public class AccountService : IAccountService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IBaseRepository<User> _userRepository;
         private readonly ILogger<AccountService> _logger;
 
-        public AccountService(IUserRepository userRepository, ILogger<AccountService> logger)
+        public AccountService(IBaseRepository<User> userRepository, ILogger<AccountService> logger)
         {
             _userRepository = userRepository;
             _logger = logger;
@@ -33,7 +33,8 @@ namespace second.Service.Implementations
 
             try
             {
-                var user = await _userRepository.GetByLogin(model.Login);
+                /*var user = await _userRepository.GetByLogin(model.Login);*/
+                var user = await _userRepository.Select().FirstOrDefaultAsync(x=>x.Login==model.Login);
                 if (user != null)
                 {
                     return new BaseResponse<ClaimsIdentity>()
@@ -75,7 +76,7 @@ namespace second.Service.Implementations
         {
             try
             {
-                var user = await _userRepository.GetByLogin(model.Login);
+                var user = await _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
                 if (user == null)
                 {
                     return new BaseResponse<ClaimsIdentity>()
@@ -128,7 +129,7 @@ namespace second.Service.Implementations
             var baseResponse = new BaseResponse<IEnumerable<User>>();
             try
             {
-                var users = await _userRepository.Select();
+                var users =  _userRepository.Select().ToList();
                 if (users.Count == 0)
                 {
                     baseResponse.Description = "Найдено 0 эл-в";
@@ -156,7 +157,7 @@ namespace second.Service.Implementations
             var baseResponse = new BaseResponse<User>();
             try
             {
-                var user = await _userRepository.GetByLogin(name);
+                var user = await _userRepository.Select().FirstOrDefaultAsync(x => x.Login == name);
                 if (user==null)
                 {
                     baseResponse.Description = "Не найдено";

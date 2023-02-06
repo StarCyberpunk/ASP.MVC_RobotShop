@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace second.DAL.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IBaseRepository<User>
     {
         private readonly ApplicationDbContext _db;
         public UserRepository(ApplicationDbContext db)
@@ -17,9 +17,9 @@ namespace second.DAL.Repositories
             _db = db;
         }
 
-        public async Task<List<User>> Select()
+        public IQueryable<User> Select()
         {
-            return await _db.Users.ToListAsync();
+            return  _db.Users;
         }
 
         public async Task<bool> Delete(User entity)
