@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -223,6 +224,37 @@ namespace second.Service.Implementations
             rw.Speed = r.Speed;
             rw.Model = r.Model;
             return rw;
+        }
+
+        public async Task<BaseResponse<IEnumerable<Robot>>> Search(string input)
+        {
+            var baseResponse = new BaseResponse<IEnumerable<Robot>>();
+            string pattern = String.Format("@(\\w*){0}(\\w*)", input);
+            Regex inp = new Regex(pattern);
+            try
+            {
+                var robots = _RoRepo.Select().Where(x=>x.Name.ToLower()==input.ToLower()).ToList();
+                if (robots.Count == 0)
+                {
+                    /* robots = _RoRepo.Select().Where(x => inp.IsMatch(x.Name)).ToList();*/
+                    baseResponse.Description = String.Format("Найдено 0 эл-в");
+                }
+                else
+                {
+                    baseResponse.Description = String.Format("Найдено {0} эл-в", robots.Count);
+                    baseResponse.Data = robots;
+                }
+                baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                var z = new BaseResponse<IEnumerable<Robot>>();
+                z.Description = $"[GetRobots]:{ex.Message}";
+
+                return z;
+            }
         }
     }
 }

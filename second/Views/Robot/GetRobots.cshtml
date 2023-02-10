@@ -7,7 +7,14 @@
     Layout = "_Layout";
 }
 
-<div class="container-fluid">
+<form asp-controller="Robot" asp-action="GetRobots">
+    
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="input2" class="sr-only">Поиск</label>
+        <input name="input2" type="search" class="form-control" id="input2" placeholder="Поиск">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Иконка</button>
+</form>
     <div class="card-group">
         <div class="row">
             @foreach (var tv in Model)

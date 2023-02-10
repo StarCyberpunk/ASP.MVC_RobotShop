@@ -10,7 +10,7 @@ namespace second.Domain.Enum
     {
         OK=200,
         InternalServerError=500,
-        UserNotFound=0,
+        ErrorDB=0,
         NotFound=404
     }
 }

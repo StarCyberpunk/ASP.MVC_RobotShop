@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using second.DAL.Interfaces;
 using second.Domain.Entity;
+using second.Domain.Response;
 using second.Domain.ViewModels;
 using second.Service.Interfaces;
 
@@ -18,13 +19,29 @@ namespace second.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRobots()
         {
-            var res = await _RobotService.GetAllRobots();
+            
+                var res = await _RobotService.GetAllRobots();
+                if (res.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    return View(res.Data);
+                }
+                return RedirectToAction("Main");
+            
+            
+            
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetRobots(string input2)
+        {
+
+            var res = await _RobotService.Search(input2);
             if (res.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(res.Data);
             }
             return RedirectToAction("Main");
         }
+
         [HttpGet]
         public async Task<IActionResult> GetRobot(int id)
         {
@@ -35,13 +52,13 @@ namespace second.Controllers
             }
             return RedirectToAction("Error");
         }
-        
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRobot(int id)
         {
             var res = await _RobotService.DeleteRobot(id);
-            if(res.Data)
+            if (res.Data)
             {
                 return RedirectToAction("GetRobots");
             }
@@ -58,7 +75,7 @@ namespace second.Controllers
             var response = await _RobotService.GetRobotById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-               RobotViewModel rrr= _RobotService.RobotToRWM(response.Data);
+                RobotViewModel rrr = _RobotService.RobotToRWM(response.Data);
                 return View(rrr);
             }
             return RedirectToAction("Error");
@@ -74,10 +91,13 @@ namespace second.Controllers
                 }
                 else
                 {
-                    await _RobotService.EditRobot(rvm.Id,rvm);
+                    await _RobotService.EditRobot(rvm.Id, rvm);
                 }
             }
             return RedirectToAction("GetRobots");
         }
+
     }
 }
+
+
