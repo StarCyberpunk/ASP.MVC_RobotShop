@@ -25,7 +25,7 @@ namespace second.Controllers
                 {
                     return View(res.Data);
                 }
-                return RedirectToAction("Main");
+                return RedirectToAction("Error");
             
             
             
@@ -39,7 +39,7 @@ namespace second.Controllers
             {
                 return View(res.Data);
             }
-            return RedirectToAction("Main");
+            return RedirectToAction("Error");
         }
 
         [HttpGet]
@@ -85,16 +85,19 @@ namespace second.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 if (rvm.Id == 0)
                 {
-                    await _RobotService.CreateRobot(rvm);
+                     await _RobotService.CreateRobot(rvm);
                 }
                 else
                 {
-                    await _RobotService.EditRobot(rvm.Id, rvm);
+                     await _RobotService.EditRobot(rvm.Id, rvm);
                 }
+
+                return Redirect(String.Format( "/Robot/GetRobot/{0}",rvm.Id));
             }
-            return RedirectToAction("GetRobots");
+            return RedirectToAction("Error");
         }
 
     }

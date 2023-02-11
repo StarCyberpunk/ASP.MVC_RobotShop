@@ -62,7 +62,7 @@ namespace second.Service.Implementations
                 if (resp == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
                     baseResponse.Data = false;
                     return baseResponse;
                 }
@@ -95,7 +95,7 @@ namespace second.Service.Implementations
                 if (robot == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
                 }
                 else
                 {
@@ -125,7 +125,7 @@ namespace second.Service.Implementations
                 if (robot==null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
 
                 }
                 else
@@ -183,7 +183,7 @@ namespace second.Service.Implementations
                 if (robot == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
                 }
                 else
                 {

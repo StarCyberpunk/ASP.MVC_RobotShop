@@ -37,7 +37,7 @@ namespace second.Service.Implementations
                 if (user == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
 
                 }
                 else
@@ -84,7 +84,7 @@ namespace second.Service.Implementations
                 if (user == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
 
                 }
                 else
@@ -103,21 +103,32 @@ namespace second.Service.Implementations
                         user.Basket = b;
                     }
                      basket = user.Basket;
-                    var order = new Order()
+                    if (user.Profile == null)
                     {
-                        RobotId = idrb,
-                        Address = user.Profile.Address,
-                        DateCreated = DateTime.Now,
-                        Basket = basket,
-                        BasketId = basket.Id,
-                    };
-                    user.Basket.Orders.Add(order);
-                   await _bsRepo.Update(user.Basket);
+                        baseResponse.Description = "Нет профиля";
+                        baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                        baseResponse.Data = false;
+                    }
+                    else
+                    {
+                        var order = new Order()
+                        {
+                            RobotId = idrb,
+                            Address = user.Profile.Address,
+                            DateCreated = DateTime.Now,
+                            Basket = basket,
+                            BasketId = basket.Id,
+                        };
+                        user.Basket.Orders.Add(order);
+                        await _bsRepo.Update(user.Basket);
+                        baseResponse.Description = "Найдено";
+                        baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
+                        baseResponse.Data = true;
+                    }
+                   
                    
 
-                    baseResponse.Description = "Найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.OK;
-                    baseResponse.Data = true;
+                    
                 }
 
                 return baseResponse;
@@ -143,7 +154,7 @@ namespace second.Service.Implementations
                 if (user == null)
                 {
                     baseResponse.Description = "Не найдено";
-                    baseResponse.StatusCode = Domain.Enum.StatusCode.UserNotFound;
+                    baseResponse.StatusCode = Domain.Enum.StatusCode.ErrorDB;
 
                 }
                 else
